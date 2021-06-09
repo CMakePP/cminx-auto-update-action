@@ -1,0 +1,14 @@
+#This is a testing workflow designed just for development
+#of the primary Action.
+
+name: test
+on: [push]
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: ./
+
