@@ -1,0 +1,22 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  repo: #Repo name to build docs against
+    description: What repo we should build docs for.
+    required: false
+    default: ${{ github.repository }}
+  ssh-key: #Key to use with git
+    description: The SSH key to use with git
+    required: false
+    default: ${{ secrets.SSH_KEY }}
+
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo }}
+    - ${{ inputs.ssh-key }}
