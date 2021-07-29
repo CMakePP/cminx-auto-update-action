@@ -9,7 +9,7 @@ inputs:
   ssh-key: #Key to use with git
     description: The SSH key to use with git
     required: false
-    default: ${{ secrets.SSH_KEY }}
+    default: ""
 
 outputs:
   time: # id of output
