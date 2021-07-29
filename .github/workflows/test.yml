@@ -13,3 +13,4 @@ jobs:
         uses: ./
         with:
           repo: 'CMakePP/CMakeTest'
+          ssh-key: ${{ secrets.SSH_KEY }}
