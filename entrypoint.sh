@@ -23,4 +23,4 @@ make docs
 cd ..
 git checkout gh-pages
 rsync -a build/docs/html/* ./
-ls -al
+git diff
