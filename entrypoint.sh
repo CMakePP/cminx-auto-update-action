@@ -6,6 +6,8 @@ chmod 600 ~/.ssh/id_rsa
 #echo "SSH ID:"
 #cat ~/.ssh/id_rsa
 
+eval "$(ssh-agent)"
+
 ssh-add
 ssh-add -l -E sha256
 
