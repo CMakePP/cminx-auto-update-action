@@ -16,11 +16,11 @@ cd repo
 git clone git@github.com:$1 .
 echo Contents
 ls -al
-mkdir -p build
-cd build
-cmake .. -DBUILD_DOCS=ON
+mkdir -p ../build
+cd ../build
+cmake ../repo -DBUILD_DOCS=ON
 make docs
-cd ..
+cd ../repo
 git checkout gh-pages
-rsync -a build/docs/html/* ./
+rsync -a ../build/docs/html/* ./
 git diff
