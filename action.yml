@@ -10,6 +10,10 @@ inputs:
     description: The SSH key to use with git
     required: false
     default: ""
+  github-token: #Github token if ssh is not wanted
+    description: A Github token to use if not using SSH
+    required: false
+    default: ${{ github.token }}
 
 outputs:
   time: # id of output
@@ -20,3 +24,4 @@ runs:
   args:
     - ${{ inputs.repo }}
     - ${{ inputs.ssh-key }}
+    - ${{ inputs.github-token }}
