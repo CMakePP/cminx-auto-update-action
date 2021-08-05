@@ -15,3 +15,4 @@ jobs:
           repo: 'CMakePP/CMakeTest'
           ssh-key: ${{ secrets.SSH_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          push: false

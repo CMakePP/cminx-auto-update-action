@@ -12,9 +12,16 @@ trap 'catch $? $LINENO' EXIT
 catch() {
   # If last exit code was erroneous
   if [ "$1" != "0" ]; then
-    # error handling goes here
     echo "${last_command} command failed with exit code $1."
   fi
+}
+
+# Check whether the current working tree is the same as what git is tracking
+# Put in function so doesn't activate traps
+check_is_same() {
+  git --no-pager diff --exit-code --quiet
+  echo $?
+  return
 }
 
 # Setup repo workspace
@@ -31,7 +38,7 @@ then
     # Clone using HTTPS
     git clone https://github.com/$1.git .
 else
-    # Not using token, so use SSH instead
+    # SSH key set so use it
 
     # Setup SSH
     mkdir -p ~/.ssh -m 700
@@ -61,8 +68,29 @@ cd ../build
 cmake ../repo -DBUILD_DOCS=ON
 make docs
 
-# rsync built docs into repo, show diff for debug
+# rsync built docs into repo
 cd ../repo
 git checkout gh-pages
 rsync -a ../build/docs/html/* ./
-git --no-pager diff
+
+
+# If working directory is different from git's tracking
+if [ ! "$(check_is_same)" -eq 0 ]
+then
+	echo "Github Pages needs updating."
+
+	# Add working tree to index, log status
+	git add .
+        git status
+        echo "Should we push? $4"
+        if [[ $4 =~ y|Y|yes|Yes|YES|true|True|TRUE|on|On|ON ]]
+        then
+                # DANGER AREA!
+                # These commands modify the repo.
+
+		echo "Pushing..."
+                git commit -m "[Bot] Update gh-pages"
+                git push
+        fi
+
+fi
