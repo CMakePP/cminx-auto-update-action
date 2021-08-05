@@ -4,9 +4,9 @@
 name: test
 on: [push]
 jobs:
-  hello_world_job:
+  test:
     runs-on: ubuntu-18.04
-    name: A job to say hello
+    name: Job to test against CMakeTest
     steps:
       - uses: actions/checkout@v2
       - id: foo
