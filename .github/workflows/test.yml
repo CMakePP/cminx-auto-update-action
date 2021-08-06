@@ -8,9 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     name: Job to test against CMakeTest
     steps:
-      - uses: actions/checkout@v2
-      - id: foo
-        uses: ./
+      - uses: ./
         with:
           repo: 'CMakePP/CMakeTest'
           docs-branch: 'gh-pages'
