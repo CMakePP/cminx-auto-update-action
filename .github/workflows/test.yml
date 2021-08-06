@@ -1,0 +1,17 @@
+#This is a testing workflow designed just for development
+#of the primary Action.
+
+name: test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    name: Job to test against CMakeTest
+    steps:
+      - uses: ./
+        with:
+          repo: 'CMakePP/CMakeTest'
+          docs-branch: 'gh-pages'
+          ssh-key: ${{ secrets.SSH_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push: false

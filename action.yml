@@ -1,0 +1,36 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  repo: #Repo name to build docs against
+    description: What repo we should build docs for.
+    required: false
+    default: ${{ github.repository }}
+
+  docs-branch: #Branch to push docs to
+    description: The branch you want to push the generated docs to
+    required: false
+    default: gh-pages
+
+  ssh-key: #Key to use with git
+    description: The SSH key to use with git
+    required: false
+    default: ""
+  github-token: #Github token if ssh is not wanted
+    description: A Github token to use if not using SSH
+    required: false
+    default: ${{ github.token }}
+  push: #Whether this action should push to gh-pages automatically
+    description: A boolean value dictating whether this action should push automatically or not.
+    required: true
+    default: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo }}
+    - ${{ inputs.ssh-key }}
+    - ${{ inputs.github-token }}
+    - ${{ inputs.push }}
+    - ${{ inputs.docs-branch }}
