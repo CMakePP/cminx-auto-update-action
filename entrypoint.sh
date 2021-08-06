@@ -89,6 +89,10 @@ then
                 # These commands modify the repo.
 
 		echo "Pushing..."
+
+                git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+                git config --global user.name "Github Action"
+
                 git commit -m "[Bot] Update gh-pages"
                 git push
         fi
