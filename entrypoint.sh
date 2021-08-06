@@ -24,6 +24,13 @@ check_is_same() {
   return
 }
 
+
+#Setup git username/password
+git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+git config --global user.name "Github Action"
+
+
+
 # Setup repo workspace
 mkdir -p repo
 cd repo
@@ -90,8 +97,6 @@ then
 
 		echo "Pushing..."
 
-                git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-                git config --global user.name "Github Action"
 
                 git commit -m "[Bot] Update gh-pages"
                 git push
