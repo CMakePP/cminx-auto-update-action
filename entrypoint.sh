@@ -70,7 +70,7 @@ make docs
 
 # rsync built docs into repo
 cd ../repo
-git checkout gh-pages
+git checkout $5 #Checkout selected docs branch
 rsync -a ../build/docs/html/* ./
 
 

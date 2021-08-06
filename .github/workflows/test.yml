@@ -13,6 +13,7 @@ jobs:
         uses: ./
         with:
           repo: 'CMakePP/CMakeTest'
+          docs-branch: 'gh-pages'
           ssh-key: ${{ secrets.SSH_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push: false

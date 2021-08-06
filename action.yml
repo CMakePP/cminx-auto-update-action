@@ -6,6 +6,12 @@ inputs:
     description: What repo we should build docs for.
     required: false
     default: ${{ github.repository }}
+
+  docs-branch: #Branch to push docs to
+    description: The branch you want to push the generated docs to
+    required: false
+    default: gh-pages
+
   ssh-key: #Key to use with git
     description: The SSH key to use with git
     required: false
@@ -31,3 +37,4 @@ runs:
     - ${{ inputs.ssh-key }}
     - ${{ inputs.github-token }}
     - ${{ inputs.push }}
+    - ${{ inputs.docs-branch }}
