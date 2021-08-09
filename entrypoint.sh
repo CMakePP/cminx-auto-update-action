@@ -27,7 +27,7 @@ check_is_same() {
 
 #Setup git username/password
 git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-git config --global user.name "Github Action"
+git config --global user.name "Github-Action"
 
 
 
@@ -43,7 +43,7 @@ then
     git config --global http.https://github.com/.extraheader "$3"
 
     # Clone using HTTPS
-    git clone https://github.com/$1.git .
+    git clone https://GithubAction:$3@github.com/$1.git .
 else
     # SSH key set so use it
 
